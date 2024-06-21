@@ -5,6 +5,18 @@
 import os
 from flask import Flask, request
 
+# This is the class you need to modify
+def safe_path(path):
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    filepath = os.path.normpath(os.path.join(base_dir, path))
+    if base_dir != os.path.commonpath([base_dir, filepath]):
+        return None
+    return filepath
+
+# Solution explanation
+
+
+
 ### Unrelated to the exercise -- Starts here -- Please ignore
 app = Flask(__name__)
 @app.route("/")
